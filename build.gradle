@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'eclipse' // optional (to generate Eclipse project files)
+    id 'idea' // optional (to generate IntelliJ IDEA project files)
 }
 
 repositories {
@@ -15,4 +17,17 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
+
+    implementation 'org.apache.commons:commons-lang3:3.11'
+
+    testImplementation(platform('org.junit:junit-bom:5.7.1'))
+    testImplementation('org.junit.jupiter:junit-jupiter')
+
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
